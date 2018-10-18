@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../../../Publics/others/layui/css/layui.css" media="all">
+    <script type="text/javascript" src="../../../FunctionJs.js"></script>
+    <style>
+        body {
+            margin: 10px;
+        }
+ 
+        .demo-carousel {
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script src="../../../Publics/others/layui/layui.js"></script>
+    <script src="../../../LayuiFunction.js"></script>
+<script>
+    var addButton = '<button class=\"layui-btn layui-btn-xs\" onclick=\'openDetial(\"新增编辑\", [\"600px\", \"550px\"], \"./editor.html\", \"ApplicationSave\", null)\'>新增</button>';
+    var  tableObj = { id: 'test', indexName: 'ID', heigt: 'full-30', url: 'Account?action=GetTableJson', page: false, 
+        cols: [  { field: 'ID', title: 'ID' },
+            { field: 'Names', title: '名称', width: 180 },
+            { field: 'TypeName', title: '消费类型' },
+            { field: 'PRICE', title: '价格' },
+            { field: 'ISOUT', title: '账目类型' },
+            { field: 'Dates', title: '日期' },
+            { field: 'Remark', title: '备注', width: 180 },
+            { fixed: 'right', title: addButton, width: 180, align: 'center', toolbar: '#barDemo' }
+        ] };
+    createTable(tableObj, function (obj) {
+            layer.alert('编辑行：<br>' + JSON.stringify(obj.data));
+             openDetial("账单编辑", ['600px', '550px'], "./editor.html", "ApplicationSave", null);
+        },
+        function (obj) {
+            layer.alert('删除行：<br>' + JSON.stringify(obj.data));
+        },
+        function(obj) {
+            layer.alert('查看行：<br>' + JSON.stringify(obj.data));
+        }
+    );
+</script>
+</body>
+</html>
+
